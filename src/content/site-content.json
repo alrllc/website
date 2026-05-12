@@ -1,0 +1,147 @@
+{
+  "brand": {
+    "name": "ALR Career Consulting LLC",
+    "shortName": "ALR",
+    "footer": "(c) 2026 ALR Career Consulting Services"
+  },
+  "hero": {
+    "eyebrow": "Bilingual career counseling",
+    "headline": "Expert Career Coaching for Your Success",
+    "subheadline": "From Uncertainty to Clarity - Your Career Starts Here",
+    "audience": "For recent graduates, career changers, returning students, and professionals who want a clearer direction, stronger career materials, and a practical plan for their next move.",
+    "primaryCta": "Call or Text Us Today",
+    "secondaryCta": "Explore Services",
+    "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1800&q=85"
+  },
+  "heroPanel": {
+    "eyebrow": "Discovery focused",
+    "headline": "Personalized support for people deciding what comes next and how to present themselves with confidence.",
+    "chips": ["English/Spanish", "Career coaching", "Resume support", "Interview prep"]
+  },
+  "servicesIntro": {
+    "eyebrow": "Services",
+    "headline": "Practical support for career decisions, job-search materials, and professional confidence.",
+    "cta": "Schedule a Free Call"
+  },
+  "services": [
+    {
+      "title": "Career Planning",
+      "body": "Clarify your interests, strengths, values, and realistic next steps so your career decisions feel less scattered and more intentional."
+    },
+    {
+      "title": "Career Coaching",
+      "body": "Work through career uncertainty, transition questions, workplace goals, and action planning with structured one-on-one guidance."
+    },
+    {
+      "title": "Workshops and Seminars",
+      "body": "Build practical skills in career readiness, job search strategy, interview preparation, and professional communication."
+    },
+    {
+      "title": "Resume Enhancement",
+      "body": "Improve resume structure, role alignment, language, and presentation so your experience is easier for employers to understand."
+    }
+  ],
+  "servicePaths": {
+    "eyebrow": "Choose your career support path",
+    "headline": "Choose the kind of support that matches your current career moment.",
+    "items": [
+      {
+        "title": "Career Clarity Session",
+        "body": "Best for clients who feel unsure about direction and need help naming goals, options, and priorities."
+      },
+      {
+        "title": "Resume Refresh",
+        "body": "Best for job seekers who need stronger resume language, cleaner formatting, and better alignment with target roles."
+      },
+      {
+        "title": "Interview Prep",
+        "body": "Best for clients preparing to explain their story, strengths, transitions, and accomplishments in interviews."
+      },
+      {
+        "title": "Career Transition Plan",
+        "body": "Best for professionals changing roles, returning to school, exploring an encore career, or shifting industries."
+      }
+    ]
+  },
+  "journey": {
+    "eyebrow": "Your next move",
+    "headline": "A career transition feels better when the path is visible.",
+    "steps": ["Clarify your goal", "Shape your story", "Practice the conversation", "Move with a plan"]
+  },
+  "expectations": {
+    "eyebrow": "What to expect",
+    "headline": "A focused process without pressure or guesswork.",
+    "items": [
+      "Start with a discovery conversation about your goals, work history, concerns, and current career season.",
+      "Identify strengths, transferable skills, gaps, and opportunities that fit the direction you want to explore.",
+      "Create a clear action plan for resumes, interviews, networking, applications, school decisions, or transition steps.",
+      "Leave with practical next steps, suggested resources, and a stronger sense of how to move forward."
+    ]
+  },
+  "vision": {
+    "eyebrow": "Vision Words",
+    "headline": "Vision Words for 2026",
+    "words": [
+      {
+        "word": "Ask",
+        "lead": "Develop thought-provoking questions about your career goals and aspirations.",
+        "bullets": [
+          "Reflect on what success means to you and what drives your passion.",
+          "Identify your strengths, values, and the skills you need to grow.",
+          "Seek feedback from mentors, colleagues, and career professionals."
+        ]
+      },
+      {
+        "word": "Seek",
+        "lead": "Pursue knowledge, growth, and continuous learning while achieving purpose and fulfillment.",
+        "bullets": [
+          "Stay informed about industry trends and emerging career opportunities.",
+          "Invest in personal and professional development through courses, certifications, and mentorship.",
+          "Embrace challenges as learning experiences that shape your journey."
+        ]
+      },
+      {
+        "word": "Knock",
+        "lead": "Explore and seize opportunities that result in a lasting impact on your career.",
+        "bullets": [
+          "Network strategically and connect with professionals in your field.",
+          "Take bold steps toward career transitions, promotions, or new ventures.",
+          "Be proactive; create opportunities instead of waiting for them to appear."
+        ]
+      }
+    ]
+  },
+  "about": {
+    "eyebrow": "About ALR",
+    "headline": "A clear path starts with a better conversation.",
+    "body": "ALR Career Consulting LLC offers a thoughtful, bilingual career counseling experience for clients who want to understand their options, communicate their value, and move forward with purpose. The work is personal and practical: we listen first, organize the career question in front of you, and help translate your experience into clear next steps.",
+    "statements": [
+      {
+        "title": "Mission Statement",
+        "body": "ALR Career Consulting LLC facilitates bilingual (English/Spanish) career counseling, career coaching, and workforce education services for recent college graduates, returning students, career changers, and individuals in the middle of a career transition."
+      },
+      {
+        "title": "Vision Statement",
+        "body": "ALR Career Consulting LLC aims passionately and intentionally to work with each client who seeks guidance and direction through various seasons of their career journey. We listen to your story, help you understand your career path, and collaborate with you to develop an action plan for your unique situation."
+      },
+      {
+        "title": "Goals",
+        "body": "Our goal is to empower individuals with the tools and knowledge necessary to make informed career decisions. We help clients discover strengths, interests, values, transferable skills, and realistic next steps for growth."
+      }
+    ]
+  },
+  "cta": {
+    "eyebrow": "Start with clarity",
+    "headline": "Schedule a free call and talk through your next step.",
+    "button": "Schedule a Free Call",
+    "image": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1800&q=85"
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "headline": "Contact Us",
+    "body": "Share where you are in your career journey and what kind of support would help most. ALR Career Consulting LLC provides bilingual (English/Spanish) career counseling, career coaching, resume enhancement, interview preparation, and workforce education support.",
+    "phone": "+1 646 812 2092",
+    "email": "info@alr.llc",
+    "bookingUrl": "#contact"
+  }
+}
