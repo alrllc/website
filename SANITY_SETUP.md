@@ -48,8 +48,15 @@ http://127.0.0.1:3000/studio
 
 Then edit the `Website Content` document.
 
+Production Studio URL:
+
+```text
+https://website-fawn-nine-35.vercel.app/studio
+```
+
 ## Production Notes
 
 - Add the same Sanity env vars in Vercel.
-- Add the deployed domain to Sanity CORS origins.
+- Add `https://website-fawn-nine-35.vercel.app` to Sanity CORS origins.
+- Add `https://website-fawn-nine-35.vercel.app/studio` as a Studio host in Sanity.
 - The site reads Sanity first. If Sanity is not configured or no document exists, it falls back to local JSON.
