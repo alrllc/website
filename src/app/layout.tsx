@@ -13,9 +13,31 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ALR Career Consulting LLC",
+  metadataBase: new URL("https://website-fawn-nine-35.vercel.app"),
+  title: {
+    default: "ALR Career Consulting LLC | Career Counseling and Coaching",
+    template: "%s | ALR Career Consulting LLC",
+  },
   description:
-    "Bilingual career counseling, career coaching, resume enhancement, and workforce education services from ALR Career Consulting LLC.",
+    "Bilingual career counseling, career coaching, resume enhancement, interview preparation, and workforce education support from ALR Career Consulting LLC.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "ALR Career Consulting LLC",
+    description:
+      "Bilingual career counseling, career coaching, resume enhancement, and workforce education support.",
+    url: "/",
+    siteName: "ALR Career Consulting LLC",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ALR Career Consulting LLC",
+    description:
+      "Bilingual career counseling, career coaching, resume enhancement, and workforce education support.",
+  },
 };
 
 export default function RootLayout({

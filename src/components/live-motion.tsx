@@ -4,6 +4,10 @@ import { useEffect, useRef, useState } from "react";
 
 const labels = ["Ask", "Seek", "Knock"];
 
+function formatNumber(value: number) {
+  return Number(value.toFixed(2));
+}
+
 export function LiveMotion() {
   const frame = useRef<number | null>(null);
   const [tick, setTick] = useState(0);
@@ -36,8 +40,8 @@ export function LiveMotion() {
       <div className="live-orbit" aria-hidden="true">
         {labels.map((label, index) => {
           const angle = tick * 0.9 + index * ((Math.PI * 2) / labels.length);
-          const x = Math.cos(angle) * 86;
-          const y = Math.sin(angle) * 42;
+          const x = formatNumber(Math.cos(angle) * 86);
+          const y = formatNumber(Math.sin(angle) * 42);
 
           return (
             <span

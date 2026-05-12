@@ -12,6 +12,7 @@ export async function getSiteContent(): Promise<SiteContent> {
     const sanityContent = await sanityClient.fetch<SiteContent | null>(
       `*[_type == "siteSettings"][0]{
         brand,
+        seo,
         hero,
         heroPanel,
         servicesIntro,

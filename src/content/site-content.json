@@ -2,7 +2,16 @@
   "brand": {
     "name": "ALR Career Consulting LLC",
     "shortName": "ALR",
-    "footer": "(c) 2026 ALR Career Consulting Services"
+    "footer": "(c) 2026 ALR Career Consulting Services",
+    "logoUrl": "",
+    "logoAlt": "ALR Career Consulting LLC logo"
+  },
+  "seo": {
+    "siteUrl": "https://website-fawn-nine-35.vercel.app",
+    "title": "ALR Career Consulting LLC | Career Counseling and Coaching",
+    "description": "Bilingual career counseling, career coaching, resume enhancement, interview preparation, and workforce education support from ALR Career Consulting LLC.",
+    "ogImage": "",
+    "locale": "en_US"
   },
   "hero": {
     "eyebrow": "Bilingual career counseling",

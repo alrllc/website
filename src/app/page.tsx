@@ -10,16 +10,47 @@ export const dynamic = "force-dynamic";
 export default async function Home() {
   const content = await getSiteContent();
   const bookingUrl = content.contact.bookingUrl || "#contact";
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: content.brand.name,
+    url: content.seo.siteUrl,
+    logo: content.brand.logoUrl || undefined,
+    image: content.seo.ogImage || content.hero.image,
+    description: content.seo.description,
+    telephone: content.contact.phone,
+    email: content.contact.email,
+    areaServed: "United States",
+    availableLanguage: ["English", "Spanish"],
+    sameAs: [],
+    serviceType: content.services.map((service) => service.title),
+  };
 
   return (
     <main className="min-h-screen bg-[#f8fafc] text-[#111827]">
+      <script
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        type="application/ld+json"
+      />
       <ScrollEffects />
       <header className="sticky top-0 z-30 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl">
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
           <a className="flex items-center gap-3" href="#home">
-            <span className="grid h-11 w-11 place-items-center rounded-md bg-[#0f4c81] text-sm font-black text-white">
-              {content.brand.shortName}
-            </span>
+            {content.brand.logoUrl ? (
+              <span className="relative block h-12 w-12 overflow-hidden rounded-md bg-white">
+                <Image
+                  alt={content.brand.logoAlt || content.brand.name}
+                  className="object-contain"
+                  fill
+                  sizes="48px"
+                  src={content.brand.logoUrl}
+                />
+              </span>
+            ) : (
+              <span className="grid h-11 w-11 place-items-center rounded-md bg-[#0f4c81] text-sm font-black text-white">
+                {content.brand.shortName}
+              </span>
+            )}
             <span className="text-sm font-black uppercase leading-4 tracking-wide text-[#0f4c81]">
               ALR Career
               <br />
@@ -408,7 +439,20 @@ export default async function Home() {
 
       <footer className="bg-[#0b1220] px-5 py-6 text-sm text-slate-300">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 text-center md:flex-row md:items-center md:justify-between md:text-left">
-          <p>{content.brand.footer}</p>
+          <div className="flex flex-col items-center gap-3 md:flex-row">
+            {content.brand.logoUrl ? (
+              <span className="relative block h-9 w-9 overflow-hidden rounded-md bg-white">
+                <Image
+                  alt={content.brand.logoAlt || content.brand.name}
+                  className="object-contain"
+                  fill
+                  sizes="36px"
+                  src={content.brand.logoUrl}
+                />
+              </span>
+            ) : null}
+            <p>{content.brand.footer}</p>
+          </div>
           <div className="flex justify-center gap-5 font-bold">
             <Link className="transition hover:text-white" href="/privacy">
               Privacy Policy

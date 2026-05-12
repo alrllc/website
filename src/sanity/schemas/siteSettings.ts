@@ -28,6 +28,29 @@ export const siteSettings = defineType({
         defineField({ name: "name", title: "Name", type: "string" }),
         defineField({ name: "shortName", title: "Short Name", type: "string" }),
         defineField({ name: "footer", title: "Footer Text", type: "string" }),
+        defineField({ name: "logoUrl", title: "Logo URL", type: "url" }),
+        defineField({ name: "logoAlt", title: "Logo Alt Text", type: "string" }),
+      ],
+    }),
+    defineField({
+      name: "seo",
+      title: "SEO",
+      type: "object",
+      fields: [
+        defineField({ name: "siteUrl", title: "Site URL", type: "url" }),
+        defineField({ name: "title", title: "SEO Title", type: "string" }),
+        defineField({
+          name: "description",
+          title: "SEO Description",
+          type: "text",
+          rows: 3,
+        }),
+        defineField({
+          name: "ogImage",
+          title: "Open Graph Image URL",
+          type: "url",
+        }),
+        defineField({ name: "locale", title: "Locale", type: "string" }),
       ],
     }),
     defineField({
