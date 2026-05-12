@@ -32,7 +32,7 @@
   "servicesIntro": {
     "eyebrow": "Services",
     "headline": "Practical support for career decisions, job-search materials, and professional confidence.",
-    "cta": "Schedule a Free Call"
+    "cta": "Free Consultation"
   },
   "services": [
     {
@@ -143,8 +143,8 @@
   },
   "cta": {
     "eyebrow": "Start with clarity",
-    "headline": "Schedule a free call and talk through your next step.",
-    "button": "Schedule a Free Call",
+    "headline": "Schedule a free consultation and talk through your next step.",
+    "button": "Free Consultation",
     "image": "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1800&q=85"
   },
   "contact": {

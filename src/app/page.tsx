@@ -85,7 +85,7 @@ export default async function Home() {
             target={hasCalendly ? "_blank" : undefined}
             rel={hasCalendly ? "noopener noreferrer" : undefined}
           >
-            Free Call
+            Free Consultation
           </a>
         </nav>
       </header>
@@ -188,14 +188,6 @@ export default async function Home() {
               {content.servicesIntro.headline}
             </h2>
           </div>
-          <a
-            className="w-fit rounded-md border border-slate-300 px-5 py-3 text-sm font-bold text-slate-800 transition hover:border-[#0f4c81] hover:text-[#0f4c81]"
-            href={bookingUrl}
-            target={hasCalendly ? "_blank" : undefined}
-            rel={hasCalendly ? "noopener noreferrer" : undefined}
-          >
-            {content.servicesIntro.cta}
-          </a>
         </div>
 
         <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
