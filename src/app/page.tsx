@@ -4,18 +4,25 @@ import { ConsultationForm } from "@/components/consultation-form";
 import { LiveMotion } from "@/components/live-motion";
 import { ScrollEffects } from "@/components/scroll-effects";
 import { getSiteContent } from "@/lib/site-content";
+import { urlForImage } from "@/sanity/image";
 
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const content = await getSiteContent();
-  const bookingUrl = content.contact.bookingUrl || "#contact";
+  const bookingUrl =
+    content.contact.calendlyUrl || content.contact.bookingUrl || "#contact";
+  const logoFromUpload = urlForImage(content.brand.logo)?.height(160).url();
+  const logoSrc = logoFromUpload || content.brand.logoUrl;
+  const logoAlt =
+    content.brand.logo?.alt || content.brand.logoAlt || content.brand.name;
+  const hasCalendly = Boolean(content.contact.calendlyUrl);
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     name: content.brand.name,
     url: content.seo.siteUrl,
-    logo: content.brand.logoUrl || undefined,
+    logo: logoSrc || undefined,
     image: content.seo.ogImage || content.hero.image,
     description: content.seo.description,
     telephone: content.contact.phone,
@@ -36,14 +43,14 @@ export default async function Home() {
       <header className="sticky top-0 z-30 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl">
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
           <a className="flex items-center gap-3" href="#home">
-            {content.brand.logoUrl ? (
+            {logoSrc ? (
               <span className="relative block h-12 w-12 overflow-hidden rounded-md bg-white">
                 <Image
-                  alt={content.brand.logoAlt || content.brand.name}
+                  alt={logoAlt}
                   className="object-contain"
                   fill
                   sizes="48px"
-                  src={content.brand.logoUrl}
+                  src={logoSrc}
                 />
               </span>
             ) : (
@@ -74,6 +81,8 @@ export default async function Home() {
           <a
             className="pulse-button rounded-md bg-[#0f4c81] px-4 py-2 text-sm font-bold text-white transition hover:bg-[#0b3b65]"
             href={bookingUrl}
+            target={hasCalendly ? "_blank" : undefined}
+            rel={hasCalendly ? "noopener noreferrer" : undefined}
           >
             Free Call
           </a>
@@ -109,6 +118,8 @@ export default async function Home() {
               <a
                 className="cta-glow rounded-md bg-[#f6c453] px-6 py-3 text-center text-sm font-black text-[#111827] transition hover:bg-[#eab23f]"
                 href={bookingUrl}
+                target={hasCalendly ? "_blank" : undefined}
+                rel={hasCalendly ? "noopener noreferrer" : undefined}
               >
                 {content.hero.primaryCta}
               </a>
@@ -179,6 +190,8 @@ export default async function Home() {
           <a
             className="w-fit rounded-md border border-slate-300 px-5 py-3 text-sm font-bold text-slate-800 transition hover:border-[#0f4c81] hover:text-[#0f4c81]"
             href={bookingUrl}
+            target={hasCalendly ? "_blank" : undefined}
+            rel={hasCalendly ? "noopener noreferrer" : undefined}
           >
             {content.servicesIntro.cta}
           </a>
@@ -231,6 +244,8 @@ export default async function Home() {
                 <a
                   className="mt-6 inline-flex text-sm font-black text-[#0f4c81]"
                   href={bookingUrl}
+                  target={hasCalendly ? "_blank" : undefined}
+                  rel={hasCalendly ? "noopener noreferrer" : undefined}
                 >
                   Start here
                 </a>
@@ -389,6 +404,8 @@ export default async function Home() {
           <a
             className="cta-glow rounded-md bg-[#f6c453] px-6 py-3 text-sm font-black text-[#111827] transition hover:bg-[#eab23f]"
             href={bookingUrl}
+            target={hasCalendly ? "_blank" : undefined}
+            rel={hasCalendly ? "noopener noreferrer" : undefined}
           >
             {content.cta.button}
           </a>
@@ -418,6 +435,31 @@ export default async function Home() {
         </div>
       </section>
 
+      {hasCalendly ? (
+        <section className="bg-white px-5 py-20">
+          <div className="mx-auto max-w-7xl">
+            <div className="mb-8 max-w-3xl" data-reveal>
+              <p className="text-sm font-black uppercase tracking-[0.16em] text-[#0f4c81]">
+                Book online
+              </p>
+              <h2 className="mt-3 text-4xl font-black leading-tight text-slate-950">
+                {content.contact.bookingLabel || "Schedule a Free Career Call"}
+              </h2>
+            </div>
+            <div
+              className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-xl"
+              data-reveal
+            >
+              <iframe
+                className="h-[760px] w-full"
+                src={content.contact.calendlyUrl}
+                title="Schedule a consultation with ALR Career Consulting LLC"
+              />
+            </div>
+          </div>
+        </section>
+      ) : null}
+
       <section id="admin" className="border-t border-slate-200 bg-white px-5 py-10">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
@@ -440,14 +482,14 @@ export default async function Home() {
       <footer className="bg-[#0b1220] px-5 py-6 text-sm text-slate-300">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 text-center md:flex-row md:items-center md:justify-between md:text-left">
           <div className="flex flex-col items-center gap-3 md:flex-row">
-            {content.brand.logoUrl ? (
+            {logoSrc ? (
               <span className="relative block h-9 w-9 overflow-hidden rounded-md bg-white">
                 <Image
-                  alt={content.brand.logoAlt || content.brand.name}
+                  alt={logoAlt}
                   className="object-contain"
                   fill
                   sizes="36px"
-                  src={content.brand.logoUrl}
+                  src={logoSrc}
                 />
               </span>
             ) : null}
@@ -467,6 +509,8 @@ export default async function Home() {
       <a
         className="sticky-cta rounded-md bg-[#f6c453] px-5 py-3 text-sm font-black text-[#111827] shadow-2xl"
         href={bookingUrl}
+        target={hasCalendly ? "_blank" : undefined}
+        rel={hasCalendly ? "noopener noreferrer" : undefined}
       >
         {content.cta.button}
       </a>

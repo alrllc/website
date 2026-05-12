@@ -28,6 +28,19 @@ export const siteSettings = defineType({
         defineField({ name: "name", title: "Name", type: "string" }),
         defineField({ name: "shortName", title: "Short Name", type: "string" }),
         defineField({ name: "footer", title: "Footer Text", type: "string" }),
+        defineField({
+          name: "logo",
+          title: "Logo Upload",
+          type: "image",
+          options: { hotspot: true },
+          fields: [
+            defineField({
+              name: "alt",
+              title: "Alt Text",
+              type: "string",
+            }),
+          ],
+        }),
         defineField({ name: "logoUrl", title: "Logo URL", type: "url" }),
         defineField({ name: "logoAlt", title: "Logo Alt Text", type: "string" }),
       ],
@@ -214,6 +227,18 @@ export const siteSettings = defineType({
         defineField({ name: "phone", title: "Phone", type: "string" }),
         defineField({ name: "email", title: "Email", type: "string" }),
         defineField({ name: "bookingUrl", title: "Booking URL", type: "string" }),
+        defineField({
+          name: "bookingLabel",
+          title: "Booking Button Label",
+          type: "string",
+        }),
+        defineField({
+          name: "calendlyUrl",
+          title: "Calendly Embed URL",
+          description:
+            "Paste your Calendly event link, for example https://calendly.com/your-name/free-call",
+          type: "url",
+        }),
       ],
     }),
   ],

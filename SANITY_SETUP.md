@@ -54,6 +54,13 @@ Production Studio URL:
 https://website-fawn-nine-35.vercel.app/studio
 ```
 
+## Logo and Calendly
+
+- In `Website Content` -> `Brand`, use `Logo Upload` to upload and save the logo in Sanity.
+- `Logo URL` is only a fallback if you already host the logo somewhere else.
+- In `Website Content` -> `Contact`, paste the Calendly event URL into `Calendly Embed URL`.
+- If `Calendly Embed URL` is filled in, the site shows an embedded scheduler section and all booking buttons open Calendly.
+
 ## Production Notes
 
 - Add the same Sanity env vars in Vercel.

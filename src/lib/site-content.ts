@@ -2,8 +2,13 @@ import { promises as fs } from "fs";
 import path from "path";
 import defaultContent from "@/content/site-content.json";
 import { sanityClient } from "@/sanity/client";
+import type { SanityImageValue } from "@/sanity/image";
 
-export type SiteContent = typeof defaultContent;
+export type SiteContent = Omit<typeof defaultContent, "brand"> & {
+  brand: Omit<(typeof defaultContent)["brand"], "logo"> & {
+    logo?: SanityImageValue | null;
+  };
+};
 
 const contentPath = path.join(process.cwd(), "src", "content", "site-content.json");
 
