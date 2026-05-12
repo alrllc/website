@@ -2,35 +2,97 @@ import { defineArrayMember, defineField, defineType } from "sanity";
 
 const stringArray = defineField({
   name: "items",
-  title: "Items",
+  title: "Bullet Points",
+  description: "Add one short point per line item. Drag to reorder.",
   type: "array",
   of: [defineArrayMember({ type: "string" })],
 });
 
 const serviceItem = defineArrayMember({
   type: "object",
+  title: "Card",
   fields: [
     defineField({ name: "title", title: "Title", type: "string" }),
-    defineField({ name: "body", title: "Body", type: "text", rows: 3 }),
+    defineField({
+      name: "body",
+      title: "Description",
+      description: "Keep this focused and easy to scan.",
+      type: "text",
+      rows: 3,
+    }),
   ],
+  preview: {
+    select: {
+      title: "title",
+      subtitle: "body",
+    },
+  },
 });
 
 export const siteSettings = defineType({
   name: "siteSettings",
-  title: "Website Content",
+  title: "Website Editor",
   type: "document",
+  groups: [
+    {
+      name: "brand",
+      title: "Brand & Logo",
+      default: true,
+    },
+    {
+      name: "home",
+      title: "Home Page",
+    },
+    {
+      name: "services",
+      title: "Services",
+    },
+    {
+      name: "vision",
+      title: "Vision",
+    },
+    {
+      name: "about",
+      title: "About",
+    },
+    {
+      name: "contact",
+      title: "Contact",
+    },
+    {
+      name: "seo",
+      title: "SEO & Analytics",
+    },
+  ],
   fields: [
     defineField({
       name: "brand",
-      title: "Brand",
+      title: "Brand, Logo, and Footer",
+      description: "Edit the business name, footer copyright text, and website logo.",
       type: "object",
+      group: "brand",
       fields: [
-        defineField({ name: "name", title: "Name", type: "string" }),
-        defineField({ name: "shortName", title: "Short Name", type: "string" }),
-        defineField({ name: "footer", title: "Footer Text", type: "string" }),
+        defineField({
+          name: "name",
+          title: "Business Name",
+          type: "string",
+          validation: (rule) => rule.required(),
+        }),
+        defineField({
+          name: "shortName",
+          title: "Short Name",
+          description: "Used in compact places if needed.",
+          type: "string",
+        }),
+        defineField({
+          name: "footer",
+          title: "Footer Copyright Text",
+          type: "string",
+        }),
         defineField({
           name: "logo",
-          title: "Logo Upload",
+          title: "Upload Logo",
+          description: "Recommended: PNG or SVG with a transparent background.",
           type: "image",
           options: { hotspot: true },
           fields: [
@@ -41,29 +103,58 @@ export const siteSettings = defineType({
             }),
           ],
         }),
-        defineField({ name: "logoUrl", title: "Logo URL", type: "url" }),
-        defineField({ name: "logoAlt", title: "Logo Alt Text", type: "string" }),
+        defineField({
+          name: "logoUrl",
+          title: "Logo URL Fallback",
+          description: "Only use this if you prefer linking to an image instead of uploading one.",
+          type: "url",
+        }),
+        defineField({
+          name: "logoAlt",
+          title: "Logo Alt Text",
+          description: "Describe the logo for screen readers.",
+          type: "string",
+        }),
       ],
     }),
     defineField({
       name: "seo",
-      title: "SEO",
+      title: "SEO, Sharing, and Analytics",
+      description: "Edit search result text, social sharing image, and Google Analytics.",
       type: "object",
+      group: "seo",
       fields: [
-        defineField({ name: "siteUrl", title: "Site URL", type: "url" }),
-        defineField({ name: "title", title: "SEO Title", type: "string" }),
+        defineField({
+          name: "siteUrl",
+          title: "Live Website URL",
+          description: "Use the final public domain once it is connected.",
+          type: "url",
+        }),
+        defineField({
+          name: "title",
+          title: "Search Result Title",
+          description: "Appears in Google results and browser tabs.",
+          type: "string",
+        }),
         defineField({
           name: "description",
-          title: "SEO Description",
+          title: "Search Result Description",
+          description: "A short summary of the business for search engines.",
           type: "text",
           rows: 3,
         }),
         defineField({
           name: "ogImage",
-          title: "Open Graph Image URL",
+          title: "Social Sharing Image URL",
+          description: "Optional image used when the site is shared on social platforms.",
           type: "url",
         }),
-        defineField({ name: "locale", title: "Locale", type: "string" }),
+        defineField({
+          name: "locale",
+          title: "Locale",
+          description: "Usually en_US.",
+          type: "string",
+        }),
         defineField({
           name: "gaMeasurementId",
           title: "Google Analytics Measurement ID",
@@ -74,37 +165,66 @@ export const siteSettings = defineType({
     }),
     defineField({
       name: "hero",
-      title: "Hero",
+      title: "Top Hero Section",
+      description: "The first section visitors see on the homepage.",
       type: "object",
+      group: "home",
       fields: [
-        defineField({ name: "eyebrow", title: "Eyebrow", type: "string" }),
-        defineField({ name: "headline", title: "Headline", type: "string" }),
+        defineField({
+          name: "eyebrow",
+          title: "Small Label",
+          type: "string",
+        }),
+        defineField({
+          name: "headline",
+          title: "Main Headline",
+          type: "string",
+          validation: (rule) => rule.required(),
+        }),
         defineField({
           name: "subheadline",
           title: "Subheadline",
           type: "text",
           rows: 2,
         }),
-        defineField({ name: "audience", title: "Audience", type: "text", rows: 3 }),
-        defineField({ name: "primaryCta", title: "Primary CTA", type: "string" }),
         defineField({
-          name: "secondaryCta",
-          title: "Secondary CTA",
+          name: "audience",
+          title: "Audience Description",
+          description: "Short text explaining who this service is for.",
+          type: "text",
+          rows: 3,
+        }),
+        defineField({
+          name: "primaryCta",
+          title: "Primary Button Text",
           type: "string",
         }),
-        defineField({ name: "image", title: "Image URL", type: "url" }),
+        defineField({
+          name: "secondaryCta",
+          title: "Secondary Button Text",
+          type: "string",
+        }),
+        defineField({
+          name: "image",
+          title: "Hero Image URL",
+          description: "Large background image near the top of the page.",
+          type: "url",
+        }),
       ],
     }),
     defineField({
       name: "heroPanel",
-      title: "Hero Panel",
+      title: "Hero Highlight Panel",
+      description: "The small summary panel near the hero section.",
       type: "object",
+      group: "home",
       fields: [
-        defineField({ name: "eyebrow", title: "Eyebrow", type: "string" }),
-        defineField({ name: "headline", title: "Headline", type: "text", rows: 3 }),
+        defineField({ name: "eyebrow", title: "Small Label", type: "string" }),
+        defineField({ name: "headline", title: "Panel Text", type: "text", rows: 3 }),
         defineField({
           name: "chips",
-          title: "Chips",
+          title: "Quick Tags",
+          description: "Short phrases shown as small tags.",
           type: "array",
           of: [defineArrayMember({ type: "string" })],
         }),
@@ -113,29 +233,36 @@ export const siteSettings = defineType({
     defineField({
       name: "servicesIntro",
       title: "Services Intro",
+      description: "Headline and button text above the services cards.",
       type: "object",
+      group: "services",
       fields: [
-        defineField({ name: "eyebrow", title: "Eyebrow", type: "string" }),
+        defineField({ name: "eyebrow", title: "Small Label", type: "string" }),
         defineField({ name: "headline", title: "Headline", type: "text", rows: 2 }),
-        defineField({ name: "cta", title: "CTA", type: "string" }),
+        defineField({ name: "cta", title: "Button Text", type: "string" }),
       ],
     }),
     defineField({
       name: "services",
-      title: "Services",
+      title: "Main Service Cards",
+      description: "Cards shown near the top of the site. Drag to reorder.",
       type: "array",
+      group: "services",
       of: [serviceItem],
     }),
     defineField({
       name: "servicePaths",
-      title: "Service Paths",
+      title: "Service Path Cards",
+      description: "More specific service options shown further down the page.",
       type: "object",
+      group: "services",
       fields: [
-        defineField({ name: "eyebrow", title: "Eyebrow", type: "string" }),
+        defineField({ name: "eyebrow", title: "Small Label", type: "string" }),
         defineField({ name: "headline", title: "Headline", type: "text", rows: 2 }),
         defineField({
           name: "items",
-          title: "Items",
+          title: "Service Path Cards",
+          description: "Drag to reorder.",
           type: "array",
           of: [serviceItem],
         }),
@@ -143,14 +270,17 @@ export const siteSettings = defineType({
     }),
     defineField({
       name: "journey",
-      title: "Journey",
+      title: "Journey Steps",
+      description: "The short step-by-step career process section.",
       type: "object",
+      group: "home",
       fields: [
-        defineField({ name: "eyebrow", title: "Eyebrow", type: "string" }),
+        defineField({ name: "eyebrow", title: "Small Label", type: "string" }),
         defineField({ name: "headline", title: "Headline", type: "text", rows: 2 }),
         defineField({
           name: "steps",
-          title: "Steps",
+          title: "Step Labels",
+          description: "Short phrases such as Clarify your goal.",
           type: "array",
           of: [defineArrayMember({ type: "string" })],
         }),
@@ -159,37 +289,55 @@ export const siteSettings = defineType({
     defineField({
       name: "expectations",
       title: "What to Expect",
+      description: "Bullet list explaining the client experience.",
       type: "object",
+      group: "home",
       fields: [
-        defineField({ name: "eyebrow", title: "Eyebrow", type: "string" }),
+        defineField({ name: "eyebrow", title: "Small Label", type: "string" }),
         defineField({ name: "headline", title: "Headline", type: "text", rows: 2 }),
         stringArray,
       ],
     }),
     defineField({
       name: "vision",
-      title: "Vision",
+      title: "Vision Words Section",
+      description: "Edit the Vision Words heading and each Ask, Seek, Knock card.",
       type: "object",
+      group: "vision",
       fields: [
-        defineField({ name: "eyebrow", title: "Eyebrow", type: "string" }),
+        defineField({ name: "eyebrow", title: "Small Label", type: "string" }),
         defineField({ name: "headline", title: "Headline", type: "string" }),
         defineField({
           name: "words",
-          title: "Words",
+          title: "Vision Word Cards",
+          description: "Each card has a word, a lead sentence, and bullets.",
           type: "array",
           of: [
             defineArrayMember({
               type: "object",
+              title: "Vision Word",
               fields: [
                 defineField({ name: "word", title: "Word", type: "string" }),
-                defineField({ name: "lead", title: "Lead", type: "text", rows: 2 }),
+                defineField({
+                  name: "lead",
+                  title: "Lead Sentence",
+                  type: "text",
+                  rows: 2,
+                }),
                 defineField({
                   name: "bullets",
                   title: "Bullets",
+                  description: "Drag to reorder.",
                   type: "array",
                   of: [defineArrayMember({ type: "string" })],
                 }),
               ],
+              preview: {
+                select: {
+                  title: "word",
+                  subtitle: "lead",
+                },
+              },
             }),
           ],
         }),
@@ -197,15 +345,18 @@ export const siteSettings = defineType({
     }),
     defineField({
       name: "about",
-      title: "About",
+      title: "About Section",
+      description: "Business description plus mission, vision, and goals cards.",
       type: "object",
+      group: "about",
       fields: [
-        defineField({ name: "eyebrow", title: "Eyebrow", type: "string" }),
+        defineField({ name: "eyebrow", title: "Small Label", type: "string" }),
         defineField({ name: "headline", title: "Headline", type: "string" }),
         defineField({ name: "body", title: "Body", type: "text", rows: 4 }),
         defineField({
           name: "statements",
-          title: "Statements",
+          title: "Mission, Vision, and Goals Cards",
+          description: "Cards shown in the about area. Drag to reorder.",
           type: "array",
           of: [serviceItem],
         }),
@@ -213,26 +364,35 @@ export const siteSettings = defineType({
     }),
     defineField({
       name: "cta",
-      title: "CTA Section",
+      title: "Call-to-Action Banner",
+      description: "The large booking prompt above the contact form.",
       type: "object",
+      group: "contact",
       fields: [
-        defineField({ name: "eyebrow", title: "Eyebrow", type: "string" }),
+        defineField({ name: "eyebrow", title: "Small Label", type: "string" }),
         defineField({ name: "headline", title: "Headline", type: "string" }),
-        defineField({ name: "button", title: "Button", type: "string" }),
-        defineField({ name: "image", title: "Image URL", type: "url" }),
+        defineField({ name: "button", title: "Button Text", type: "string" }),
+        defineField({ name: "image", title: "Background Image URL", type: "url" }),
       ],
     }),
     defineField({
       name: "contact",
-      title: "Contact",
+      title: "Contact and Booking",
+      description: "Contact text, phone, email, and Calendly settings.",
       type: "object",
+      group: "contact",
       fields: [
-        defineField({ name: "eyebrow", title: "Eyebrow", type: "string" }),
+        defineField({ name: "eyebrow", title: "Small Label", type: "string" }),
         defineField({ name: "headline", title: "Headline", type: "string" }),
         defineField({ name: "body", title: "Body", type: "text", rows: 4 }),
         defineField({ name: "phone", title: "Phone", type: "string" }),
         defineField({ name: "email", title: "Email", type: "string" }),
-        defineField({ name: "bookingUrl", title: "Booking URL", type: "string" }),
+        defineField({
+          name: "bookingUrl",
+          title: "Booking Button URL",
+          description: "Where the booking buttons should send visitors.",
+          type: "url",
+        }),
         defineField({
           name: "bookingLabel",
           title: "Booking Button Label",

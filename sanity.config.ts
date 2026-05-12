@@ -7,6 +7,7 @@ import {
   sanityDataset,
   sanityProjectId,
 } from "@/sanity/env";
+import { structure } from "@/sanity/structure";
 
 export default defineConfig({
   name: "alr_career_consulting",
@@ -15,7 +16,7 @@ export default defineConfig({
   dataset: sanityDataset || "production",
   apiVersion: sanityApiVersion,
   basePath: "/studio",
-  plugins: [structureTool(), visionTool()],
+  plugins: [structureTool({ structure }), visionTool()],
   schema: {
     types: schemaTypes,
   },
