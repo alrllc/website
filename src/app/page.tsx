@@ -78,9 +78,6 @@ export default async function Home() {
             <a className="transition hover:text-[#0f4c81]" href="#vision">
               Vision
             </a>
-            <Link className="transition hover:text-[#0f4c81]" href="/studio">
-              Edit
-            </Link>
           </div>
           <a
             className="pulse-button rounded-md bg-[#0f4c81] px-4 py-2 text-sm font-bold text-white transition hover:bg-[#0b3b65]"
@@ -464,25 +461,6 @@ export default async function Home() {
         </section>
       ) : null}
 
-      <section id="admin" className="border-t border-slate-200 bg-white px-5 py-10">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <div>
-            <p className="text-sm font-black uppercase tracking-[0.16em] text-[#0f4c81]">
-              Website backend
-            </p>
-            <h2 className="mt-2 text-2xl font-black text-slate-950">
-              Edit the site content from Sanity Studio.
-            </h2>
-          </div>
-          <Link
-            className="w-fit rounded-md bg-[#0f4c81] px-5 py-3 text-sm font-black text-white transition hover:bg-[#0b3b65]"
-            href="/studio"
-          >
-            Open Sanity Studio
-          </Link>
-        </div>
-      </section>
-
       <footer className="bg-[#0b1220] px-5 py-6 text-sm text-slate-300">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 text-center md:flex-row md:items-center md:justify-between md:text-left">
           <div className="flex flex-col items-center gap-3 md:flex-row">
@@ -505,6 +483,9 @@ export default async function Home() {
             </Link>
             <Link className="transition hover:text-white" href="/terms">
               Terms of Use
+            </Link>
+            <Link className="transition hover:text-white" href="/studio">
+              Login
             </Link>
           </div>
         </div>
