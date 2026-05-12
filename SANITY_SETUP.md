@@ -61,6 +61,12 @@ https://website-fawn-nine-35.vercel.app/studio
 - In `Website Content` -> `Contact`, paste the Calendly event URL into `Calendly Embed URL`.
 - If `Calendly Embed URL` is filled in, the site shows an embedded scheduler section and all booking buttons open Calendly.
 
+## Google Analytics
+
+- In `Website Content` -> `SEO`, paste the GA4 Measurement ID into `Google Analytics Measurement ID`.
+- Example format: `G-XXXXXXXXXX`.
+- Alternatively, set `NEXT_PUBLIC_GA_MEASUREMENT_ID` in Vercel environment variables.
+
 ## Production Notes
 
 - Add the same Sanity env vars in Vercel.

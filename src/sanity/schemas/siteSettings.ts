@@ -64,6 +64,12 @@ export const siteSettings = defineType({
           type: "url",
         }),
         defineField({ name: "locale", title: "Locale", type: "string" }),
+        defineField({
+          name: "gaMeasurementId",
+          title: "Google Analytics Measurement ID",
+          description: "Example: G-XXXXXXXXXX",
+          type: "string",
+        }),
       ],
     }),
     defineField({

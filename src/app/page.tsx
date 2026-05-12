@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { ConsultationForm } from "@/components/consultation-form";
 import { LiveMotion } from "@/components/live-motion";
 import { ScrollEffects } from "@/components/scroll-effects";
@@ -17,6 +18,8 @@ export default async function Home() {
   const logoAlt =
     content.brand.logo?.alt || content.brand.logoAlt || content.brand.name;
   const hasCalendly = Boolean(content.contact.calendlyUrl);
+  const gaMeasurementId =
+    content.seo.gaMeasurementId || process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
@@ -39,6 +42,7 @@ export default async function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         type="application/ld+json"
       />
+      {gaMeasurementId ? <GoogleAnalytics gaId={gaMeasurementId} /> : null}
       <ScrollEffects />
       <header className="sticky top-0 z-30 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl">
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
