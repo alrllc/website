@@ -38,10 +38,55 @@ const client = createClient({
   useCdn: false,
 });
 
+function slug(value) {
+  return (
+    String(value || "item")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "")
+      .slice(0, 32) || "item"
+  );
+}
+
+function addKeys(value, path = "root") {
+  if (Array.isArray(value)) {
+    return value.map((item, index) => {
+      if (!item || typeof item !== "object" || Array.isArray(item)) {
+        return item;
+      }
+
+      const keyedItem = Object.fromEntries(
+        Object.entries(item).map(([key, nested]) => [
+          key,
+          addKeys(nested, `${path}-${key}`),
+        ]),
+      );
+
+      return {
+        _key:
+          item._key ||
+          `${slug(item.title || item.word || path)}-${String(index + 1)}`,
+        ...keyedItem,
+      };
+    });
+  }
+
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, nested]) => [
+        key,
+        addKeys(nested, `${path}-${key}`),
+      ]),
+    );
+  }
+
+  return value;
+}
+
 await client.createOrReplace({
   _id: "siteSettings",
   _type: "siteSettings",
-  ...content,
+  ...addKeys(content),
 });
 
 console.log("Seeded Sanity siteSettings document.");
